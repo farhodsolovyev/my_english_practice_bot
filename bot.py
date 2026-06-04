@@ -31,7 +31,7 @@ from telegram.ext import (
 )
 
 # ---------- НАСТРОЙКИ ----------
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8922540867:AAF-1dQYi929S8EBpPH-CuDjvGob8zwDrLA")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 # Проверь актуальное имя модели в docs.anthropic.com. Haiku — дешевле, Sonnet — умнее.
 MODEL = "claude-haiku-4-5-20251001"
