@@ -4,6 +4,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python3 bot.py"
+    "startCommand": "python bot.py"
   }
 }
