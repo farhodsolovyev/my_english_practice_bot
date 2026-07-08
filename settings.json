@@ -1,0 +1,16 @@
+{
+  "7293638467": {
+    "user_id": 7293638467,
+    "level": "A1",
+    "quiz_seconds": 15,
+    "quiz_size": 10,
+    "voice": "en-US-AriaNeural"
+  },
+  "39585779": {
+    "user_id": 39585779,
+    "level": "B1",
+    "quiz_seconds": 0,
+    "quiz_size": 10,
+    "voice": "en-US-GuyNeural"
+  }
+}

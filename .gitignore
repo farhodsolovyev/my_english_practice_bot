@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Runtime data
+*.db
+user_progress.json
+daily.json
+settings.json
+stats.json
+srs.json
+tts_cache/
+bot.log
+bot.pid
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.idea/
+.vscode/
