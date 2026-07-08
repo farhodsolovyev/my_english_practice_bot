@@ -26,10 +26,10 @@ _load_env()
 
 class Settings:
     def __init__(self) -> None:
-        token = os.environ.get("BOT_TOKEN")
+        token = os.environ.get("BOT_TOKEN") or os.environ.get("TELEGRAM_BOT_TOKEN")
         if not token:
             raise RuntimeError(
-                "BOT_TOKEN не задан. Скопируй .env.example в .env и впиши токен от @BotFather."
+                "BOT_TOKEN не задан. Установи переменную окружения BOT_TOKEN или добавь её в Railway/ .env."
             )
         self.bot_token = token
 

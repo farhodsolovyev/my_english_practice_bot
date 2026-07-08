@@ -15,9 +15,25 @@ Telegram-бот для изучения английского языка (aiogr
 # 1) токен
 cp .env.example .env        # впиши BOT_TOKEN от @BotFather
 
-# 2) запуск (сам создаёт venv и ставит зависимости при первом старте)
+# 2) запуск
 ./run.sh start
 ```
+
+## 🚄 Railway
+
+Для деплоя в Railway достаточно:
+
+1. Загрузить репозиторий в GitHub.
+2. Создать проект в Railway из этого репозитория.
+3. В разделе Variables добавить:
+   - BOT_TOKEN = ваш токен Telegram-бота
+4. В разделе Settings → Start Command указать:
+   - python3 bot.py
+
+Если вы используете Railway, именно здесь нужно ввести свой токен:
+- Railway → Project → Variables → New Variable
+- Name: BOT_TOKEN
+- Value: ваш токен от @BotFather
 
 Двойным кликом в Finder: **`start.command`** / **`stop.command`**.
 
