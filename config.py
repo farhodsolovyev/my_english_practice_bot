@@ -6,14 +6,26 @@
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
-def _load_env(path: str = ".env") -> None:
-    p = Path(path)
-    if not p.exists():
+
+def _resolve_path(path_value: str | os.PathLike[str] | None, default: str) -> Path:
+    candidate = Path(path_value or default)
+    if candidate.is_absolute():
+        return candidate
+    return BASE_DIR / candidate
+
+
+def _load_env(path: str | os.PathLike[str] | None = None) -> None:
+    env_path = _resolve_path(path, ".env")
+    if not env_path.exists():
         return
-    for line in p.read_text(encoding="utf-8").splitlines():
+    for line in env_path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
@@ -43,14 +55,14 @@ class Settings:
         self.quiz_deadline_seconds = int(os.environ.get("QUIZ_DEADLINE_SECONDS", "15"))
 
         # Storage
-        self.settings_file = os.environ.get("SETTINGS_FILE", "settings.json")
-        self.stats_file = os.environ.get("STATS_FILE", "stats.json")
-        self.srs_file = os.environ.get("SRS_FILE", "srs.json")
-        self.progress_file = os.environ.get("PROGRESS_FILE", "progress.json")
+        self.settings_file = str(_resolve_path(os.environ.get("SETTINGS_FILE"), "settings.json"))
+        self.stats_file = str(_resolve_path(os.environ.get("STATS_FILE"), "stats.json"))
+        self.srs_file = str(_resolve_path(os.environ.get("SRS_FILE"), "srs.json"))
+        self.progress_file = str(_resolve_path(os.environ.get("PROGRESS_FILE"), "progress.json"))
 
         # Напоминания
         self.reminder_hour = int(os.environ.get("REMINDER_HOUR", "10"))  # час дня (0-23), локальное время
-        self.tts_cache_dir = os.environ.get("TTS_CACHE_DIR", "tts_cache")
+        self.tts_cache_dir = str(_resolve_path(os.environ.get("TTS_CACHE_DIR"), "tts_cache"))
 
 
 settings = Settings()

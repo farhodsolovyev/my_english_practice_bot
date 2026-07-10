@@ -16,7 +16,7 @@ Telegram-бот для изучения английского языка (aiogr
 cp .env.example .env        # впиши BOT_TOKEN от @BotFather
 
 # 2) запуск
-./run.sh start
+python3 bot.py
 ```
 
 ## 🚄 Railway
@@ -30,23 +30,23 @@ cp .env.example .env        # впиши BOT_TOKEN от @BotFather
 4. В разделе Settings → Start Command указать:
    - python3 bot.py
 
+> Важно: приложение не запустится без `BOT_TOKEN`.
+> В репозитории не должно быть реального токена.
+
 Если вы используете Railway, именно здесь нужно ввести свой токен:
 - Railway → Project → Variables → New Variable
 - Name: BOT_TOKEN
 - Value: ваш токен от @BotFather
 
-Двойным кликом в Finder: **`start.command`** / **`stop.command`**.
-
 ### Управление
 
-| Команда | Действие |
-|---|---|
-| `./run.sh start`   | запустить бота в фоне (создаёт/чинит venv, ставит зависимости, убирает дубли-инстансы) |
-| `./run.sh stop`    | остановить |
-| `./run.sh restart` | перезапустить |
-| `./run.sh status`  | статус |
-| `./run.sh logs`    | смотреть логи (`tail -f`) |
-| `./run.sh install` | только venv + зависимости |
+Запуск осуществляется напрямую:
+
+```bash
+python3 bot.py
+```
+
+Для остановки бота достаточно прервать процесс Ctrl+C.
 
 **Стек:** Python 3.12+ (совместим с 3.9 через `from __future__ import annotations`),
 `aiogram==3.7.0`, `edge-tts==7.2.8`. Больше зависимостей нет — конфиг читает `.env` на stdlib.
